@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { EyeOffIcon, EyeIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import BannerImage from "./components/BannerImage";
+import LogoAuth from "./LogoAuth";
 
 export default function Home() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -27,74 +28,63 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent<SignInFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Form submitted");
   };
   return (
     <div className="grid grid-cols-12 h-screen">
-      <div className="col-span-12 md:col-span-6 w-full space-y-1 p-8 flex justify-center items-center py-8">
-        <Image
-          src="/images/logo.svg"
-          alt="Logo"
-          width={162}
-          height={82}
-          className="absolute top-8 left-8"
-        />
+      <div className="col-span-12 md:col-span-5 w-full space-y-1 flex justify-center items-center flex-col p-4 md:p-8">
+        <LogoAuth />
         <div className="flex justify-center items-center max-w-[400px] w-full">
-          <Card className="w-full max-w-md bg-navy-950 text-white border-none">
+          <Card className="w-full max-w-md bg-navy-950 text-white border-none shadow-none md:pt-20">
             <CardHeader className="p-0">
-              <CardTitle className="justify-start text-white text-[40px] font-bold ">
+              <CardTitle className="justify-start text-white text-[32px] md:text-[40px]">
                 Sign in
               </CardTitle>
-              <p className="text-[#959595] text-lg font-normal">
+              <p className="text-[#959595] text-base md:text-lg font-normal">
                 Please login to continue to your account.
               </p>
             </CardHeader>
             <CardContent className="p-0">
               <form onSubmit={handleSubmit}>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="sr-only">
-                      Email
-                    </Label>
+                <div className="space-y-6">
+                  <Input
+                    id="email"
+                    type="Email"
+                    placeholder="Email"
+                    className="bg-transparent rounded-[10px] border !border-[#d9d9d9] !text-lg focus:!border-blue-500 focus:ring-0 focus-visible:ring-0 leading-[27px] h-[60px] "
+                    required
+                  />
+                  <div className="relative">
                     <Input
-                      id="email"
-                      placeholder="Email"
-                      type="email"
-                      className="p-4 rounded-[10px] border !border-[#d9d9d9] focus:!border-blue-500 !text-[#9a9a9a] !text-lg font-normal leading-[27px] h-[60px] outline-none focus-visible:outline-none"
-                      autoComplete="off"
+                      id="password"
+                      placeholder="Password"
+                      type={showPassword ? "text" : "password"}
+                      className="bg-transparent rounded-[10px] border !border-[#d9d9d9] !text-lg focus:!border-blue-500 focus:ring-0 focus-visible:ring-0 leading-[27px] h-[60px] "
                       required
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="relative">
-                      <Label htmlFor="password" className="sr-only">
-                        Password
-                      </Label>
-                      <Input
-                        id="password"
-                        placeholder="Password"
-                        type={showPassword ? "text" : "password"}
-                        className="p-4 rounded-[10px] border !border-[#d9d9d9] focus:!border-blue-500 !text-[#9a9a9a] !text-lg font-normal leading-[27px] h-[60px] outline-none focus-visible:outline-none pr-10"
-                        required
-                      />
-                      <button
-                        type="button"
-                        className="absolute right-4 top-5 text-gray-400 cursor-pointer"
-                        onClick={togglePasswordVisibility}
-                      >
-                        {showPassword ? (
-                          <EyeIcon className="h-5 w-5" />
-                        ) : (
-                          <EyeOffIcon className="h-5 w-5" />
-                        )}
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      className="absolute right-4 top-5 text-gray-400 cursor-pointer"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? (
+                        <EyeIcon className="h-5 w-5" />
+                      ) : (
+                        <EyeOffIcon className="h-5 w-5" />
+                      )}
+                    </button>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <Checkbox id="remember" className="w-[18px] h-[18px] outline-2 cursor-pointer" />
-                      <Label htmlFor="remember" className="text-[#9a9a9a] text-base font-medium">
+                      <Checkbox
+                        id="remember"
+                        className="w-[18px] h-[18px] border-2 border-white rounded-[4px] data-[state=checked]:bg-white data-[state=checked]:border-[#357aff]"
+                      ></Checkbox>
+
+                      <Label
+                        htmlFor="remember"
+                        className="text-[#9a9a9a] text-base font-medium"
+                      >
                         Keep me logged in
                       </Label>
                     </div>
@@ -107,7 +97,7 @@ export default function Home() {
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    className="px-3 py-1.5 bg-[#1a3f70] h-auto rounded-lg text-white text-lg font w-full leading-[30px] cursor-pointer hover:bg-[#1a3f70]"
                   >
                     Sign in
                   </Button>
@@ -117,14 +107,8 @@ export default function Home() {
           </Card>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-6 w-full space-y-1 rounded-3xl ">
-        <Image
-          src="/images/auth-image.png"
-          alt="Auth Image"
-          width={1500}
-          height={1300}
-          className="h-full  p-3 w-[100%] max-h-screen md:min-h-screen object-cover rounded-3xl"
-        />
+      <div className="col-span-12 md:col-span-7 w-full space-y-1 rounded-3xl ">
+        <BannerImage />
       </div>
     </div>
   );
