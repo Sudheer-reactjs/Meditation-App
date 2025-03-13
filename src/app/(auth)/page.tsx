@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { EyeOffIcon, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import BannerImage from "./components/BannerImage";
-import LogoAuth from "./LogoAuth";
+import LogoAuth from "./components/LogoAuth";
 
 export default function Home() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -35,9 +35,9 @@ export default function Home() {
       <div className="col-span-12 md:col-span-5 w-full space-y-1 flex justify-center items-center flex-col p-4 md:p-8">
         <LogoAuth />
         <div className="flex justify-center items-center max-w-[400px] w-full">
-          <Card className="w-full max-w-md bg-navy-950 text-white border-none shadow-none md:pt-20">
+          <Card className="w-full max-w-md bg-navy-950 gap-8 text-white border-none shadow-none md:pt-20">
             <CardHeader className="p-0">
-              <CardTitle className="justify-start text-white text-[32px] md:text-[40px]">
+              <CardTitle className="justify-start text-white text-[30px] md:text-[36px]">
                 Sign in
               </CardTitle>
               <p className="text-[#959595] text-base md:text-lg font-normal">
@@ -89,7 +89,7 @@ export default function Home() {
                       </Label>
                     </div>
                     <Link
-                      href="#"
+                      href="/forgot-password"
                       className="text-[#9a9a9a] text-base font-medium"
                     >
                       Forgot Password?
