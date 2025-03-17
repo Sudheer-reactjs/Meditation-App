@@ -8,33 +8,49 @@ import {
 } from "@/components/ui/sidebar";
 import LogoCard from "./LogoCard";
 import { NavMain } from "./NavMain";
+import { AudioTagesIcon, BellNotifactionIcon, CompassIcon, SecurityIcon, SubscriptionIcon, UsersIcon } from "@/lib/svg";
 
 // Sample data for the sidebar menu
 const data = {
   navMain: [
     {
-      title: "Dashboard",
-      url: "/dashboard",
+      title: "Overview",
+      url: "/admin/dashboard",
+      icon: CompassIcon 
     },
     {
-      title: "Vehicles",
+      title: "Users",
       url: "#",
+      icon: UsersIcon,
       items: [
-        { title: "Vehicle List", url: "/vehicle-list" },
-        { title: "Vehicle Assignments", url: "/vehicle-assignments" },
-        { title: "Meter History", url: "/meter-history" },
-        { title: "Expense History", url: "/expense-history" },
-        { title: "Replacement Analysis", url: "/replacement-analysis" },
-        { title: "Telematics Devices", url: "/telematics-devices" },
+        { title: "Company Lists", url: "/admin/company-lists" },
+        { title: "User Lists", url: "/admin/user-lists" },
+        { title: "Blocked Users", url: "/admin/blocked-users" },
       ],
     },
     {
-      title: "Inspections",
-      url: "/inspections",
+      title: "Audio Library",
+      url: "#",
+      icon: SecurityIcon,
+      items: [
+        { title: "All Collections", url: "/admin/all-collections" },
+        { title: "User Lists", url: "/admin/audio-files" },
+      ],
     },
     {
-      title: "Issues",
-      url: "/issues",
+      title: "Audio Tags",
+      url: "admin/audio-tags",
+      icon: AudioTagesIcon,
+    },
+    {
+      title: "Subscription",
+      url: "/admin/subscription",
+      icon: SubscriptionIcon,
+    },
+    {
+      title: "Analytics",
+      url: "/admin/analytics",
+      icon: SubscriptionIcon,
     },
     
   ],
@@ -42,13 +58,19 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="bg-[#1B2236] py-6 px-4 !border-0">
+    <Sidebar collapsible="icon" {...props} className="bg-[#1B2236] py-6 px-4 !border-0 rounded-tr-[20px] rounded-br-[20px]">
       <SidebarHeader className="p-0">
         <LogoCard />
       </SidebarHeader>
+      <hr className="opacity-[0.30] my-6"></hr>
       <SidebarContent className="p-0">
         <NavMain items={data.navMain} />
       </SidebarContent>
+      <div className="flex gap-2 items-center mt-6 text-white text-base font-normal">
+        <BellNotifactionIcon />
+         Subscriptions Expiring in <br></br>1 Week
+      </div>
+      <hr className="opacity-[0.30] mt-6"></hr>
     </Sidebar>
   );
 }

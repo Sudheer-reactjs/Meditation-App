@@ -57,7 +57,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #fff;
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -138,12 +138,15 @@ h1, h2, h3, h4, h5, h6, [data-slot="card-title"], button {
   font-family: var(--font-dm-sans), sans-serif;
   font-weight: 700;
 }
-
+.dm-sans{
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 400; 
+}
 body {
   font-family: "SF Pro Display", sans-serif;
   background-color: #0B132B;
   color: #fff;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 input{
@@ -167,4 +170,25 @@ input:-ms-input-placeholder {
 input:-moz-placeholder { 
   color: #9A9A9A;
 }
-
+.placeholder-white::-webkit-input-placeholder { 
+  color: #fff
+}
+.placeholder-white::-moz-placeholder { 
+  color: #fff
+}
+.placeholder-white:-ms-input-placeholder {
+  color: #fff
+}
+.placeholder-white:-moz-placeholder { 
+  color: #fff;
+} 
+.card-bg{
+  background-color: #1b2236 ; 
+}
+[data-slot="sheet-overlay"], [data-slot="alert-dialog-overlay"]{  
+    background-color: rgba(0, 9, 35, 0.5);
+    backdrop-filter: blur(3.9px); 
+}
+.button-hide  button.ring-offset-background.focus\:ring-ring.data-\[state\=open\]\:bg-secondary.absolute.top-4.right-4.rounded-xs.opacity-70.transition-opacity.hover\:opacity-100.focus\:ring-2.focus\:ring-offset-2.focus\:outline-hidden.disabled\:pointer-events-none {
+  display: none;
+}

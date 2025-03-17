@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 import {
@@ -36,7 +37,7 @@ export function NavMain({
   const pathname = usePathname()
 
   return (
-    <SidebarGroup>
+    <SidebarGroup className="p-0 dm-sans">
       <SidebarMenu>
         {items.map((item) => {
           const isActive = pathname === item.url || (item.items && item.items.some(sub => pathname === sub.url))
@@ -50,20 +51,21 @@ export function NavMain({
             >
               <SidebarMenuItem className={isActive ? "" : ""}>
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title} className={`px-[8px] py-[6px] h-auto ${isActive ? "bg-greenColor" : "font-normal"}`}>
-                    {item.icon && <item.icon />}
-                    <span>{item.title}</span>
-                    <ChevronRight className={`ml-auto transition-transform duration-200 ${isActive ? "rotate-90" : ""}`} />
+                  <SidebarMenuButton tooltip={item.title} className={`cursor-pointer px-[12px] py-[10px] dm-sans h-auto ${isActive ? "bg-[#1a3f70]" : "font-normal"}`}>
+                  {item.icon && React.createElement(item.icon, { className: "!h-5 !w-5" })}
+                    <span className="dm-sans">{item.title}</span>
+                    <ChevronRight className={`ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 ${isActive ? "rotate-[90deg]" : "rotate-0"}`} />
+
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <SidebarMenuSub>
+                  <SidebarMenuSub className="border-0">
                     {item.items.map((subItem) => {
                       const isSubActive = pathname === subItem.url
                       return (
                         <SidebarMenuSubItem key={subItem.title} className={isSubActive ? "" : ""}>
                           <SidebarMenuSubButton asChild>
-                            <a href={subItem.url} className= {`p-1 h-auto hover:bg-transparent hover:!text-[#059669] ${isSubActive ? "!text-[#059669] " : " !text-[#737373] font-normal"}`}>
+                            <a href={subItem.url} className= {`p-2 py-[10px] h-auto hover:!bg-transparent hover:!text-[#b9b9b9] ${isSubActive ? "!text-[#b9b9b9] " : " !text-[#fff] font-normal"}`}>
                               <span>{subItem.title}</span>
                             </a>
                           </SidebarMenuSubButton>
@@ -75,12 +77,11 @@ export function NavMain({
               </SidebarMenuItem>
             </Collapsible>
           ) : (
-            <SidebarMenuItem key={item.title} className={isActive ? "" : ""}>
-              <SidebarMenuButton asChild tooltip={item.title}>
-                <a href={item.url} className={`px-[8px] py-[6px] h-auto flex items-center gap-2  ${isActive ? "bg-greenColor" : "font-normal"}`}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200" />
+            <SidebarMenuItem key={item.title} className={isActive  ? "" : ""} >
+              <SidebarMenuButton asChild tooltip={item.title} >
+                <a href={item.url} className={`dm-sans px-[12px] py-[10px] h-auto flex items-center gap-2  ${isActive ? "bg-[#1a3f70]" : "font-normal"}`}>
+                {item.icon && React.createElement(item.icon, { className: "!h-5 !w-5" })}
+                  <span >{item.title}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
