@@ -58,15 +58,15 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="bg-[#1B2236] py-6 px-4 !border-0 rounded-tr-[20px] rounded-br-[20px]">
-      <SidebarHeader className="p-0">
+    <Sidebar collapsible="icon" {...props} className="bg-[#1B2236] !py-6 !px-4 !border-0 rounded-tr-[20px] rounded-br-[20px]">
+      <SidebarHeader className="px-4 pt-1 pb-0 md:p-0">
         <LogoCard />
       </SidebarHeader>
-      <hr className="opacity-[0.30] my-6"></hr>
-      <SidebarContent className="p-0">
+      <hr className="opacity-[0.30] mb-5 md:my-6"></hr>
+      <SidebarContent className="px-4 py-0 md:p-0">
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <div className="flex gap-2 items-center mt-6 text-white text-base font-normal">
+      <div className="flex gap-2 items-center mt-6 text-white text-base font-normal px-4 py-0 md:p-0">
         <BellNotifactionIcon />
          Subscriptions Expiring in <br></br>1 Week
       </div>

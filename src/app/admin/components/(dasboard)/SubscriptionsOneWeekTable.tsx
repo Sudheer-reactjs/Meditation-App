@@ -1,5 +1,4 @@
 
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
     Table,
     TableBody,
@@ -34,8 +33,9 @@ import {
   
     const SubscriptionReminderTable = () => {
     return (
-        <ScrollArea className="h-[210px] w-full rounded-md ">
-        <Table>
+      <div className=" w-full rounded-none overflow-hidden">
+      <div className="w-full overflow-auto h-[210px] scroll-container">
+    <Table className="min-w-[350px] scrollbar-thin scroll-container">
         <TableHeader>
           <TableRow className="text-white text-sm font-bold dm-sans border-0 border-b border-[#666666] hover:bg-transparent">
             <TableHead className="w-[100px] py-4">Id</TableHead>
@@ -56,7 +56,8 @@ import {
           </TableBody>
       
       </Table>
-      </ScrollArea>
+      </div>
+      </div>
       
     )
   }

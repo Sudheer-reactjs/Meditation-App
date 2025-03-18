@@ -192,3 +192,16 @@ input:-moz-placeholder {
 .button-hide  button.ring-offset-background.focus\:ring-ring.data-\[state\=open\]\:bg-secondary.absolute.top-4.right-4.rounded-xs.opacity-70.transition-opacity.hover\:opacity-100.focus\:ring-2.focus\:ring-offset-2.focus\:outline-hidden.disabled\:pointer-events-none {
   display: none;
 }
+.scroll-container::-webkit-scrollbar {
+  width: 6px; /* Scrollbar width */
+  height: 6px; /* Horizontal scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #1a3f70; /* Thumb color */
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: #0B132B; /* Track color */
+}
