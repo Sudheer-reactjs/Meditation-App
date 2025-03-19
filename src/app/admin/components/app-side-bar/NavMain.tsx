@@ -65,7 +65,7 @@ export function NavMain({
                       return (
                         <SidebarMenuSubItem key={subItem.title} className={isSubActive ? "" : ""}>
                           <SidebarMenuSubButton asChild>
-                            <a href={subItem.url} className= {`p-2 py-[10px] h-auto hover:!bg-transparent hover:!text-[#b9b9b9] ${isSubActive ? "!text-[#b9b9b9] " : " !text-[#fff] font-normal"}`}>
+                            <a href={subItem.url} className= {`p-2 py-[10px] h-auto hover:!bg-[#0B132B]  ${isSubActive ? "bg-[#0B132B]" : " !text-[#fff] font-normal"}`}>
                               <span>{subItem.title}</span>
                             </a>
                           </SidebarMenuSubButton>

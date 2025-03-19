@@ -39,7 +39,7 @@ const data = {
     },
     {
       title: "Audio Tags",
-      url: "admin/audio-tags",
+      url: "/admin/audio-tags",
       icon: AudioTagesIcon,
     },
     {
